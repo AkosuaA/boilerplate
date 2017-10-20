@@ -1,52 +1,51 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  <meta charset="utf-8">
-  <title>phonegap & jquery mobile boilerplate</title>
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+<head>
+	<meta charset="utf-8">
+	<title>Find My Location</title>
 
-  <link rel="stylesheet"  href="css/jquery.mobile.structure.css" />
-  <link rel="stylesheet" href="css/jquery.mobile.theme.css" />
-  
-  <script>
-    var userAgent = navigator.userAgent + '';
-    if (userAgent.indexOf('iPhone') > -1) {
-      document.write('<script src="js/lib/cordova-iphone.js"></sc' + 'ript>');
-      var mobile_system = 'iphone';
-    } else if (userAgent.indexOf('Android') > -1) {
-      document.write('<script src="js/lib/cordova-android.js"></sc' + 'ript>');
-      var mobile_system = 'android';
-    } else {
-      var mobile_system = '';
-    }
-  </script>
-  
-  <script src="js/lib/jquery.js"></script>
-  <!-- your scripts here -->
-  <script src="js/app/app.js"></script>
-  <script src="js/app/bootstrap.js"></script>
-  <script src="js/lib/jquery.mobile.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-  </head>
-  <body>
-    
-    <div data-role="page">
+	<link rel="stylesheet" href="css/map.css" />
 
-    	<div data-role="header">
-    		<h1>Single page</h1>
-    	</div><!-- /header -->
 
-    	<div data-role="content">
-            <p id="geolocation">
-                Finding geolocation....
-            </p>
-    	</div><!-- /content -->
+	<!-- javascript-->
+	<script>
+		var userAgent = navigator.userAgent + '';
+		if (userAgent.indexOf('iPhone') > -1) {
+			document.write('<script src="js/lib/cordova-iphone.js"></sc' + 'ript>');
+			var mobile_system = 'iphone';
+		} else if (userAgent.indexOf('Android') > -1) {
+			document.write('<script src="js/lib/cordova-android.js"></sc' + 'ript>');
+			var mobile_system = 'android';
+		} else {
+			var mobile_system = '';
+		}
+	</script>
+</head>
+<!-- application body -->
+<body>
+	<!-- div for map-->
+	<div id="map">
 
-    	<div data-role="footer">
-    		<h4>Footer content</h4>
-    	</div><!-- /footer -->
+	</div>
+	
+	<!-- Panel for containing buttons -->
+	<div id="floating-panel">
+		<!-- find location onclick -->
+		<input onclick="getLocation();" type=button value="Find Geolocation">
+		<!-- hide marker onclick-->
+		<input onclick="hide();" type=button value="Hide Location">
+		<!-- show marker onclick-->
+		<input onclick="makeVisible();" type=button value="Show Location">
+	</div>
+</body>
 
-    </div><!-- /page -->
-  </body>
+<!-- your scripts here -->
+<script src="js/lib/jquery.js"></script>
+<script src="js/app/app.js"></script>
+<script src="js/app/bootstrap.js"></script>
+<script src="js/lib/jquery.mobile.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGw5DcciFfdnrymMt-mNHQzNX2ojU_nl4&callback=initMap"
+async defer></script>
 </html>
